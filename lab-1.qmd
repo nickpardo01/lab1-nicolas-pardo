@@ -18,7 +18,7 @@ library(viridis)
 ## Exercise 1
 
 ```{r}
-#|ex-1
+#|label: ex-1
 ggplot(midwest, aes(x = popdensity))+
   geom_histogram(binwidth = 10000)+
   labs(title = "Midwest Population Density", y = "Frequency", x = "Population Density")
@@ -30,7 +30,7 @@ The distribution is unimodal and right skewed. There is an outlier around 90000.
 ## Exercise 2
 
 ```{r}
-#|ex-2
+#|label: ex-2
 ggplot(midwest, aes(x = percbelowpoverty, y = percollege, color = state))+
   geom_point()+
   labs(title = "College Education and Poverty Percentages \nBy State", x = "Percentage Below Poverty", y = "Percentage College Educated") +
@@ -45,7 +45,7 @@ There is a large concentration of points around 10% below poverty and 15% colleg
 
 ## Exercise 4
 ```{r}
-#|ex-4
+#|label: ex-4
 ggplot(midwest, aes(x = percbelowpoverty, y = percollege, color = state))+
   geom_smooth(se = FALSE, show.legend = F)+
   geom_point(show.legend = F, alpha = .5)+
@@ -54,7 +54,26 @@ ggplot(midwest, aes(x = percbelowpoverty, y = percollege, color = state))+
 ```
 I prefer this visualization because the states are not overlapping and you can see more of the distribution as well as geom_smooth giving more information.
 ## Exercise 5
-
+```{r}
+#|label: ex-5
+ggplot(midwest, aes(x = area, color = state))+
+  geom_boxplot()+
+  labs(title = "Geographic Area of Counties \nBy State", x = "Area (units unknown)")+
+  theme(axis.ticks.y = element_blank(), axis.text.y = element_blank()) 
+```
+The single largest county is in MI as seen by the green dot on the far right. This plot shows the distributions, medians, and outliers of each states area. WI has the largest median, while the other states are around 0.03. IN and OH have the smallest ranges. 
 ## Exercise 6
-
+```{r}
+#|label: ex-6
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No")) 
+ggplot(midwest, aes(x = state, fill = metro))+
+  geom_bar(position = "fill")+
+  labs(title = "Metropolitain Counties by State", x = "State", y = "Proportion")
+```
+This chart shows the proportion of counties in metro areas. OH has the most counties in metro areas while IL and WI have similar, low, levels of counties in metro areas. MI has slights more metro counties than IL and WI. 
 ## Exercise 7
+```{r}
+#|label: ex7
+```
+
