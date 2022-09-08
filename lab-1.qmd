@@ -18,7 +18,7 @@ library(viridis)
 ## Exercise 1
 
 ```{r}
-#|pop_density
+#|ex-1
 ggplot(midwest, aes(x = popdensity))+
   geom_histogram(binwidth = 10000)+
   labs(title = "Midwest Population Density", y = "Frequency", x = "Population Density")
@@ -30,7 +30,7 @@ The distribution is unimodal and right skewed. There is an outlier around 90000.
 ## Exercise 2
 
 ```{r}
-#|College
+#|ex-2
 ggplot(midwest, aes(x = percbelowpoverty, y = percollege, color = state))+
   geom_point()+
   labs(title = "College Education and Poverty Percentages \nBy State", x = "Percentage Below Poverty", y = "Percentage College Educated") +
@@ -41,10 +41,18 @@ scale_color_viridis_d()
 
 ## Exercise 3
 
-(Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+There is a large concentration of points around 10% below poverty and 15% college educated for all of the states. WI has one county with the highest poverty percentage of all the states. MI has one county with the highest percentage of college educated adults. Overall the states have very similar distributions of poverty percentages and college educated percentages.
 
 ## Exercise 4
-
+```{r}
+#|ex-4
+ggplot(midwest, aes(x = percbelowpoverty, y = percollege, color = state))+
+  geom_smooth(se = FALSE, show.legend = F)+
+  geom_point(show.legend = F, alpha = .5)+
+  facet_wrap(~state)+
+  labs(title = "College Education and Poverty Percentages \nBy State", x = "Percentage Below Poverty", y = "Percentage College Educated") 
+```
+I prefer this visualization because the states are not overlapping and you can see more of the distribution as well as geom_smooth giving more information.
 ## Exercise 5
 
 ## Exercise 6
