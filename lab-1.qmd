@@ -75,5 +75,10 @@ This chart shows the proportion of counties in metro areas. OH has the most coun
 ## Exercise 7
 ```{r}
 #|label: ex7
+ggplot(midwest, aes(x = percollege, y = popdensity, color = percbelowpoverty))+
+  geom_point(size = 2, alpha = 0.5)+
+  facet_wrap(~state)+
+  labs(title = "Do people with college degrees tend to live in denser areas?", y = "Population density (person / unit area", x = "% college educated" )+
+  theme_minimal()
 ```
 
