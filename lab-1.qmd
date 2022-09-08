@@ -1,6 +1,6 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "[INSERT NAME]"
+author: "Nicolas Pardo"
 format: pdf
 editor: visual
 ---
@@ -12,15 +12,32 @@ editor: visual
 #| message: false
 
 library(tidyverse)
+library(viridis)
 ```
 
 ## Exercise 1
 
-(Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r}
+#|pop_density
+ggplot(midwest, aes(x = popdensity))+
+  geom_histogram(binwidth = 10000)+
+  labs(title = "Midwest Population Density", y = "Frequency", x = "Population Density")
+
+```
+
+The distribution is unimodal and right skewed. There is an outlier around 90000.
 
 ## Exercise 2
 
-(Type your answer to Exercise 2 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+```{r}
+#|College
+ggplot(midwest, aes(x = percbelowpoverty, y = percollege, color = state))+
+  geom_point()+
+  labs(title = "College Education and Poverty Percentages \nBy State", x = "Percentage Below Poverty", y = "Percentage College Educated") +
+scale_color_viridis_d()
+
+```
+
 
 ## Exercise 3
 
@@ -28,11 +45,8 @@ library(tidyverse)
 
 ## Exercise 4
 
-
 ## Exercise 5
 
-
 ## Exercise 6
-
 
 ## Exercise 7
